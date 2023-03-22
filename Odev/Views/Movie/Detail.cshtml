@@ -1,0 +1,44 @@
+﻿@model MoviesDto
+@{
+    ViewData["Title"] = "Movies Details";
+    Layout = "_Layout2";
+}
+<div class="container">
+    <h2>Movies Details</h2>
+</div>
+<div class="card mb-3" style="max-width:720px;">
+    <div class="row g-0">
+        <div class="col-md-4">
+            <img class="img-fluid rounded-start" src="@Model.ImageFile" alt="Movie Image" />
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h3 class="card-title">@Model.MovieName</h3>
+            <dl>
+                <dt>
+                    @Html.DisplayNameFor(m=>m.MovieDescription)
+                </dt>
+                <dd>@Model.MovieDescription</dd>
+                    <dt>
+                        @Html.DisplayNameFor(m=>m.IsVision)
+                    </dt>
+                    <dd>@Model.IsVision</dd>
+                    <dt>
+                    @Html.DisplayNameFor(m=>m.ReleaseDate)
+                </dt>
+                <dd>@Model.ReleaseDate</dd>
+                    <dt>
+                        @Html.DisplayNameFor(m=>m.CategoryName)
+                    </dt>
+                    <dd>@Model.CategoryName</dd>
+            </dl>
+            
+        </div>
+    </div>
+</div>
+<br />
+<br />
+<br />
+<div>
+<a asp-action="GetMovies" asp-controller="Movie" class="btn btn-outline-dark">Back</a>
+    </div>

@@ -1,0 +1,25 @@
+﻿@model CategoriesVM
+@{
+    ViewData["Title"] = "Category Details";
+    Layout = "_Layout2";
+}
+<div class="container">
+    <h2>Category Details</h2>
+</div>
+<div class="card mb-3">
+    <div class="card-header"><h3 class="card-title">@Model.Categories.CategoryName</h3></div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <dl>
+                    <dt>
+                        @Html.DisplayNameFor(c=>c.Categories.CategoryDescription)
+                    </dt>
+                    <dd>@Model.Categories.CategoryDescription</dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+    <br />
+    <div>
+        <a asp-action="GetCategory" asp-controller="Category" class="btn btn-outline-dark">Back</a>
+    </div>

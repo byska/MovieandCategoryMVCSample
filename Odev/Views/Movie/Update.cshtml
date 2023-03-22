@@ -1,0 +1,46 @@
+﻿@model MoviesVM
+@{
+    ViewData["Title"] = "Update Movies";
+    Layout = "_Layout2";
+}
+
+<form asp-action="Update">
+    <div class="mb-2">
+        <label asp-for="Movies.MovieName" class="form-label">Movie Name</label>
+        <input type="text" class="form-control" asp-for="Movies.MovieName" />
+    </div>
+    <div class="mb-2">
+        <label asp-for="Movies.MovieDescription" class="form-label">Movie Description</label>
+        <input type="text" class="form-control" asp-for="Movies.MovieDescription" />
+    </div>
+    <br />
+ <div class="mb-2">
+        <label asp-for="Movies.IsVision" class="form-label">Is the movie in the vision?</label>
+        <input type="checkbox" class="form-check-input" asp-for="Movies.IsVision" />
+    </div>
+    <div class="mb2">
+        <label asp-for="Movies.ReleaseDate" class="form-label">Movie Release Date</label>
+        <input type="date" class="form-control" asp-for="Movies.ReleaseDate" />
+    </div>
+    <br />
+    <div class="mb-2">
+        <select asp-for="Movies.CategoryID" class="form-select">
+            <option selected>Categories</option>
+            @foreach(var item in Model.CategoriesForDropDown)
+            {
+                <option value="@item.Value">@item.Text</option>
+            }
+        </select>
+    </div>
+    <div class="mb-2">
+        <label asp-for="Movies.ImageFile" class="form-label">Enter The File Path</label>
+        <input type="text" class="form-control" asp-for="Movies.ImageFile" />
+    </div>
+    <div>
+        <button type="submit" class="btn btn-outline-primary mt-3">Update</button>
+    </div>
+</form>
+<br />
+<div>
+    <a asp-action="GetMovies" asp-controller="Movie" class="btn btn-outline-dark">Back</a>
+</div>

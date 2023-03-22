@@ -1,0 +1,38 @@
+﻿@model MoviesVM
+@{
+    ViewData["Title"] = "Home Page";
+    Layout = "_Layout2";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <h3>List of Movies in Vision</h3>
+</div>
+
+<table class="table table-hover table-bordered">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(m=>m.Movies.MovieName)</th>
+            <th>@Html.DisplayNameFor(m=>m.Movies.MovieDescription)</th>
+            <th>@Html.DisplayNameFor(m=>m.Movies.ReleaseDate)</th>
+            <th>@Html.DisplayNameFor(m=>m.Movies.MovieCategory.CategoryName)</th>
+            <th>Details</th>   
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.movieList)
+        {
+            <tr>
+                <td>@item.MovieName</td>
+                <td>@item.MovieDescription</td>
+                <td>@item.ReleaseDate</td>
+                <td>@item.CategoryName</td>
+                <td class="text-center">
+                    <a asp-action="Detail" asp-controller="Movie" asp-route-id="@item.MovieID">
+                        <i class="fa-solid fa-circle-info text-secondary"></i>
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

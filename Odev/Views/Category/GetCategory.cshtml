@@ -1,0 +1,44 @@
+﻿@model CategoriesVM
+@{
+    ViewData["Title"] = "Categories";
+    Layout = "_Layout2";
+}
+@if (TempData["result"] != null)
+{
+    <div class="alert alert-success">@TempData["result"]</div>
+}
+<hr />
+<br />
+<a asp-action="Create" asp-controller="Category"><i class="fa-solid fa-plus fa-primary fa-2x"></i></a>
+
+<table class="table tabletable-hover table-bordered caption-top">
+    <caption>List of Categories</caption>
+    <thead class="table-dark">
+        <tr>
+            <th>@Html.DisplayNameFor(c=>c.Categories.CategoryName)</th>
+            <th>@Html.DisplayNameFor(c=>c.Categories.CategoryDescription)</th>
+            <th>Details</th>
+            <th>Update</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model.categoryList)
+        {
+           <tr>
+               <td>@item.CategoryName</td>
+               <td>@item.CategoryDescription</td>
+               <td class="text-center">
+                   <a asp-action="Details" asp-controller="Category" asp-route-id="@item.CategoryID"><i class="fa-solid fa-circle-info text-secondary"></i></a>
+               </td>
+                <td class="text-center">
+                    <a asp-action="Update" asp-controller="Category" asp-route-id="@item.CategoryID"><i class="fa-solid fa-pencil text-info"></i></a>
+                </td>
+                    <td class="text-center">
+                    <a asp-action="Delete" asp-controller="Category" asp-route-id="@item.CategoryID"><i class="fa-solid fa-trash text-danger"></i></a>
+                   </td>
+           </tr>
+        }
+    </tbody>
+
+</table>
